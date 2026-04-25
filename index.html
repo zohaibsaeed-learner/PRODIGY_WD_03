@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="watch">
+            <div class="outer-circle">
+                <div class="inner-circle">
+                    <span class="text minute"></span>
+                    <span class="text sec">0 :</span>
+                    <span class="text msec">&nbsp;0</span>
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <button class="button reset hidden">Reset</button>
+                <button class="button play">Play</button>
+                <button class="button lap hidden">Lap</button>
+            </div>
+        </div>
+        <ul class="laps">
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <li class="lap-item">
+                <span class="number">#1</span>
+                <span class="time-stamp"> 01 : 45 : 72</span>
+            </li>
+            <button class="lap-clear-button">Clear All</button>
+        </ul>
+    </div>
+
+    <!--Javascript-->
+    <script>
+        const playButton = document.getElementsByClassName("play") [0];
+        const lapButton = document.getElementsByClassName("lap") [0];
+        const resetButton = document.getElementsByClassName("reset") [0];
+        const second = document.getElementsByClassName("sec") [0];
+        const centiSecond = document.getElementsByClassName("msec") [0];
+
+        let isPlay = false;
+        let secCounter = 0;
+        let sec;
+        let centiSec;
+        let centiCounter = 0;
+
+        const togglebutton = () => {
+            lapButton.classList.remove("hidden");
+            resetButton.classList.remove("hidden");
+        }
+
+        const play = () => {
+            if (!isPlay) {
+                playButton.innerHTML = 'Pause';
+                sec = setInterval( () => {
+                        second.innerText = `${secCounter++} : ` ;
+                    } , 1000)
+
+                centiSec = setInterval( () => {
+                        centiSecond.innerText = `${centiCounter++} : ` ;
+                    } , 10)
+                isPlay = true;
+            } else {
+                playButton.innerHTML = 'Play';
+                clearInterval(sec);
+                clearInterval(msec);
+                isPlay = false;
+            }
+            togglebutton();
+        }
+
+        const reset = () => {
+            play();
+            lapButton.classList.add("hidden");
+            resetButton.classList.add("hidden");
+            second.innerHTML = '0 :';
+            milisec.innerHTML = '0';
+        }
+
+        playButton.addEventListener("click", play);
+        resetButton.addEventListener("click", reset);
+    </script>
+</body>
+</html>

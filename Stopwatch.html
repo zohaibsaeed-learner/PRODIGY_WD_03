@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="watch-face">
+            <div class="outer-circle" id="glowRing">
+                <div class="inner-circle">
+                    <span class="time" id="minute">00</span>
+                    <span class="divider">:</span>
+                    <span class="time" id="sec">00</span>
+                    <span class="time ms" id="msec">.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-wrapper">
+            <button id="resetBtn" class="button hidden">Reset</button>
+            <button id="playBtn" class="button play">Start</button>
+            <button id="lapBtn" class="button hidden">Lap</button>
+        </div>
+
+        <div class="laps-wrapper">
+            <div class="laps-container">
+                <ul id="lapsList" class="laps"></ul>
+            </div>
+            <button id="clearLaps" class="clear-button hidden">Clear All Laps</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
